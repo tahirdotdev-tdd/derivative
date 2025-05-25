@@ -103,6 +103,10 @@
             margin-bottom: 10px;
         }
         
+        .mobile-table {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -110,16 +114,67 @@
             }
             
             h1 {
-                font-size: 2em;
+                font-size: 1.8em;
+                margin-bottom: 20px;
             }
             
-            th, td {
-                padding: 12px 8px;
+            /* Hide desktop table on mobile */
+            .desktop-table {
+                display: none;
+            }
+            
+            /* Show mobile-friendly card layout */
+            .mobile-table {
+                display: block;
+            }
+            
+            .rule-card {
+                background: #fff;
+                border-radius: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+            
+            .rule-header {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                padding: 15px;
+                font-weight: bold;
+                font-size: 1.2em;
+                text-align: center;
+            }
+            
+            .rule-content {
+                padding: 20px;
+            }
+            
+            .mobile-section {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-label {
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 8px;
+                text-transform: uppercase;
                 font-size: 0.9em;
+                letter-spacing: 0.5px;
             }
             
-            table {
-                font-size: 0.85em;
+            .formula {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+            
+            .example {
+                font-size: 0.95em;
+                margin-bottom: 10px;
+            }
+            
+            .description {
+                font-size: 0.95em;
+                line-height: 1.5;
             }
         }
     </style>
@@ -127,7 +182,9 @@
 <body>
     <div class="container">
         <h1>📐 Derivative Rules Reference</h1>
-        <table>
+        
+        <!-- Desktop Table -->
+        <table class="desktop-table">
             <thead>
                 <tr>
                     <th>Rule Name</th>
@@ -225,6 +282,125 @@
                 </tr>
             </tbody>
         </table>
+        
+        <!-- Mobile Card Layout -->
+        <div class="mobile-table">
+            <div class="rule-card">
+                <div class="rule-header">Power Rule</div>
+                <div class="rule-content">
+                    <div class="mobile-section">
+                        <div class="mobile-label">Formula</div>
+                        <div class="formula">d/dx[x^n] = n·x^(n-1)</div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Example</div>
+                        <div class="example">
+                            d/dx[x^5] = 5x^4<br>
+                            d/dx[x^3] = 3x^2<br>
+                            d/dx[x^(-2)] = -2x^(-3)
+                        </div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Description</div>
+                        <div class="description">
+                            Used to find the derivative of functions where x is raised to a constant power. Multiply by the exponent and reduce the exponent by 1.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rule-card">
+                <div class="rule-header">Product Rule</div>
+                <div class="rule-content">
+                    <div class="mobile-section">
+                        <div class="mobile-label">Formula</div>
+                        <div class="formula">d/dx[f(x)·g(x)] = f'(x)·g(x) + f(x)·g'(x)</div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Example</div>
+                        <div class="example">d/dx[x^2·sin(x)] = 2x·sin(x) + x^2·cos(x)</div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Description</div>
+                        <div class="description">
+                            Used when differentiating the product of two functions. Take the derivative of the first times the second, plus the first times the derivative of the second.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rule-card">
+                <div class="rule-header">Linear Operator Rule</div>
+                <div class="rule-content">
+                    <div class="mobile-section">
+                        <div class="mobile-label">Formula</div>
+                        <div class="formula">d/dx[af(x) + bg(x)] = a·f'(x) + b·g'(x)</div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Example</div>
+                        <div class="example">d/dx[3x^2 + 5x] = 3(2x) + 5(1) = 6x + 5</div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Description</div>
+                        <div class="description">
+                            The derivative of a linear combination equals the linear combination of the derivatives. Constants can be factored out of derivatives.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rule-card">
+                <div class="rule-header">Exponent Rule</div>
+                <div class="rule-content">
+                    <div class="mobile-section">
+                        <div class="mobile-label">Formula</div>
+                        <div class="formula">
+                            d/dx[e^(f(x))] = e^(f(x))·f'(x)<br><br>
+                            d/dx[a^(f(x))] = a^(f(x))·ln(a)·f'(x)
+                        </div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Example</div>
+                        <div class="example">
+                            d/dx[e^(2x)] = e^(2x)·2 = 2e^(2x)<br>
+                            d/dx[3^x] = 3^x·ln(3)
+                        </div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Description</div>
+                        <div class="description">
+                            Used for exponential functions. For e^x, multiply by the derivative of the exponent. For other bases, include ln(base) as a factor.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rule-card">
+                <div class="rule-header">Derivative of Logarithm Rule</div>
+                <div class="rule-content">
+                    <div class="mobile-section">
+                        <div class="mobile-label">Formula</div>
+                        <div class="formula">
+                            d/dx[ln(f(x))] = f'(x)/f(x)<br><br>
+                            d/dx[log_a(f(x))] = f'(x)/(f(x)·ln(a))
+                        </div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Example</div>
+                        <div class="example">
+                            d/dx[ln(x^2)] = 2x/x^2 = 2/x<br>
+                            d/dx[log_10(x)] = 1/(x·ln(10))
+                        </div>
+                    </div>
+                    <div class="mobile-section">
+                        <div class="mobile-label">Description</div>
+                        <div class="description">
+                            For natural logarithm, divide the derivative of the argument by the argument itself. For other bases, include 1/ln(base) as a factor.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
