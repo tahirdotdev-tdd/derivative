@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derivative Rules</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .rule-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: #f1f3f4;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+        
+        .example {
+            background: #fff3e0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .description {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9em;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📐 Derivative Rules Reference</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rule Name</th>
+                    <th>Formula</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="rule-name">Power Rule</td>
+                    <td>
+                        <div class="formula">
+                            d/dx[x^n] = n·x^(n-1)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="example">
+                            d/dx[x^5] = 5x^4<br>
+                            d/dx[x^3] = 3x^2<br>
+                            d/dx[x^(-2)] = -2x^(-3)
+                        </div>
+                    </td>
+                    <td class="description">
+                        Used to find the derivative of functions where x is raised to a constant power. Multiply by the exponent and reduce the exponent by 1.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rule-name">Product Rule</td>
+                    <td>
+                        <div class="formula">
+                            d/dx[f(x)·g(x)] = f'(x)·g(x) + f(x)·g'(x)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="example">
+                            d/dx[x^2·sin(x)] = 2x·sin(x) + x^2·cos(x)
+                        </div>
+                    </td>
+                    <td class="description">
+                        Used when differentiating the product of two functions. Take the derivative of the first times the second, plus the first times the derivative of the second.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rule-name">Linear Operator Rule</td>
+                    <td>
+                        <div class="formula">
+                            d/dx[af(x) + bg(x)] = a·f'(x) + b·g'(x)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="example">
+                            d/dx[3x^2 + 5x] = 3(2x) + 5(1) = 6x + 5
+                        </div>
+                    </td>
+                    <td class="description">
+                        The derivative of a linear combination equals the linear combination of the derivatives. Constants can be factored out of derivatives.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rule-name">Exponent Rule</td>
+                    <td>
+                        <div class="formula">
+                            d/dx[e^(f(x))] = e^(f(x))·f'(x)<br><br>
+                            d/dx[a^(f(x))] = a^(f(x))·ln(a)·f'(x)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="example">
+                            d/dx[e^(2x)] = e^(2x)·2 = 2e^(2x)<br>
+                            d/dx[3^x] = 3^x·ln(3)
+                        </div>
+                    </td>
+                    <td class="description">
+                        Used for exponential functions. For e^x, multiply by the derivative of the exponent. For other bases, include ln(base) as a factor.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rule-name">Derivative of Logarithm Rule</td>
+                    <td>
+                        <div class="formula">
+                            d/dx[ln(f(x))] = f'(x)/f(x)<br><br>
+                            d/dx[log_a(f(x))] = f'(x)/(f(x)·ln(a))
+                        </div>
+                    </td>
+                    <td>
+                        <div class="example">
+                            d/dx[ln(x^2)] = 2x/x^2 = 2/x<br>
+                            d/dx[log_10(x)] = 1/(x·ln(10))
+                        </div>
+                    </td>
+                    <td class="description">
+                        For natural logarithm, divide the derivative of the argument by the argument itself. For other bases, include 1/ln(base) as a factor.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
